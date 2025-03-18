@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -120,7 +121,14 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               FloatingActionButton(
-                onPressed: _incrementCounter,
+                onPressed:() {
+                      launchUrl(
+                        Uri.parse(
+                          'https://maps.google.com/?q=${armazenarlocalizacao?.latitude},${armazenarlocalizacao?.longitude}',
+                        ),
+                        mode: LaunchMode.externalApplication,
+                      );
+                    },
                 tooltip: 'Pesquisar no Google',
                 child: const Icon(Icons.screen_search_desktop_outlined),
                 heroTag: '1',
