@@ -68,6 +68,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Text(
+              'Venha Saber onde você esta!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+              ),
+            ),
+            SizedBox(height: 50),
             IconButton(
               onPressed: () {
                 buscarGeolocalizacao();
@@ -95,6 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           SizedBox(width: 35),
           FloatingActionButton(
@@ -106,11 +116,23 @@ class _MyHomePageState extends State<MyHomePage> {
             heroTag: '1',
           ),
           SizedBox(width: MediaQuery.of(context).size.width * 0.65),
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-            heroTag: '2',
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              FloatingActionButton(
+                onPressed: _incrementCounter,
+                tooltip: 'Pesquisar no Google',
+                child: const Icon(Icons.screen_search_desktop_outlined),
+                heroTag: '1',
+              ),
+              SizedBox(height: 20),
+              FloatingActionButton(
+                onPressed: _incrementCounter,
+                tooltip: 'Increment',
+                child: const Icon(Icons.add),
+                heroTag: '2',
+              ),
+            ],
           ),
         ],
       ),
